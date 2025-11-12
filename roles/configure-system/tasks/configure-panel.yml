@@ -1,0 +1,16 @@
+---
+- name: Copy hackthebox scripts
+  copy:
+    src: files/vpnpanel.sh
+    dest: /etc/htb/vpnpanel.sh
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+  become_method: sudo
+
+- name: Configure MATE panel
+  dconf:
+    key: "/org/mate/panel/"
+    value: "{{ lookup('file', 'files/mate-panel.conf') }}"
+    state: present
