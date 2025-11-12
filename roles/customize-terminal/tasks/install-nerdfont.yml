@@ -1,0 +1,35 @@
+---
+- name: "Check if CaskaydiaMono Nerd Font is already installed"
+  shell: "fc-list | grep -i 'CaskaydiaMono Nerd Font'"
+  register: caskaydia_font
+  ignore_errors: true
+  changed_when: false
+
+- name: "Install CaskaydiaMono Nerd Font if missing"
+  block:
+    - name: "Download CaskaydiaMono Nerd Font zip"
+      get_url:
+        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CaskaydiaCode.zip"
+        dest: "/tmp/CaskaydiaCode.zip"
+        mode: '0644'
+
+    - name: "Ensure fonts directory exists"
+      file:
+        path: "{{ ansible_env.HOME }}/.local/share/fonts"
+        state: directory
+        mode: '0755'
+
+    - name: "Unzip CaskaydiaMono Nerd Font"
+      unarchive:
+        src: "/tmp/CaskaydiaCode.zip"
+        dest: "{{ ansible_env.HOME }}/.local/share/fonts/"
+        remote_src: yes
+        extra_opts: [ "-j" ]
+      args:
+        creates: "{{ ansible_env.HOME }}/.local/share/fonts/CaskaydiaMonoNerdFont-Regular.ttf"
+
+    - name: "Rebuild font cache"
+      command: fc-cache -fv
+      args:
+        warn: false
+  when: caskaydia_font.stdout == ""
