@@ -2,10 +2,10 @@
 
 # Instructions
 * Start with Parrot HTB Edition
-* Install Ansible (python3 -m pip install ansible)
+* Install pipx (`sudo apt install pipx && pipx ensurepath`)
+* Install Ansible (`pipx install ansible-base && pipx inject ansible-base pipx`)
 * Clone and enter the repo (git clone)
 * ansible-galaxy install -r requirements.yml
-* Make sure we have a sudo token (sudo whoami)
 * ansible-playbook -K main.yml
 
 # Off-Video Changes
