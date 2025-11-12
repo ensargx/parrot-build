@@ -1,4 +1,13 @@
 ---
+- name: Ensure /etc/htb directory exists
+  file:
+    path: /etc/htb
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  become: true
+
 - name: Copy hackthebox scripts
   copy:
     src: files/vpnpanel.sh
