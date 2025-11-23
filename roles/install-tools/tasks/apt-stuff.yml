@@ -21,10 +21,11 @@
   become: true
   become_method: sudo
 
-- name: "Remove NetExec - We want to use pipx for this"
+- name: "Remove NetExec and pipx - We want to use python & pipx for this"
   package:
     name: 
       - netexec
+      - pipx
     state: absent
   become: true
   become_method: sudo
@@ -43,7 +44,6 @@
   package:
     name:
       - jq
-      - pipx
       - ntpdate
       - flameshot
       - exiftool
