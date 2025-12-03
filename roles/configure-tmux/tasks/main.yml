@@ -10,4 +10,8 @@
     src: "{{ role_path }}/files/.tmux.conf"
     dest: "{{ ansible_env.HOME }}"
 
+- name: Install TPM
+  git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "{{ ansible_user_id }}/.tmux/plugins/tpm"
 
