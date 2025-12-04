@@ -1,7 +1,7 @@
 ---
 - name: Ensure pipx path is set globally
   become: yes
-  ansible.builtin.command: pipx ensurepath --global
+  ansible.builtin.command: pipx ensurepath
   args:
     creates: /etc/profile.d/pipx.sh
 
