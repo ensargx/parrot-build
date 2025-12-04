@@ -51,7 +51,6 @@
       - ca-certificates
       - curl
       - gh
-      - pipx
     state: latest
   become: true
   become_method: sudo
