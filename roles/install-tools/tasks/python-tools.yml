@@ -1,17 +1,9 @@
 ---
-- name: Install pipx and ensure path
+- name: Ensure pipx path is set globally
   become: yes
-  tasks:
-    - name: Install pipx using pip
-      ansible.builtin.pip:
-        name: pipx
-        executable: python3
-        extra_args: "--break-system-packages"
-
-    - name: Ensure pipx path is set globally
-      ansible.builtin.command: pipx ensurepath --global
-      args:
-        creates: /etc/profile.d/pipx.sh
+  ansible.builtin.command: pipx ensurepath --global
+  args:
+    creates: /etc/profile.d/pipx.sh
 
 - name: "Install pipx tools"
   community.general.pipx:

@@ -1,4 +1,5 @@
 collections:
   - name: community.general
-  - name: gantsign.visual-studio-code
   - name: community.docker
+roles:
+  - name: gantsign.visual-studio-code
