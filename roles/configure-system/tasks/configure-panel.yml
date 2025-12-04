@@ -19,7 +19,7 @@
   become_method: sudo
 
 - name: Configure MATE panel
-  dconf:
+  community.general.dconf:
     key: "/org/mate/panel/"
     value: "{{ lookup('file', 'files/mate-panel.conf') }}"
     state: present

@@ -17,7 +17,7 @@
 - include_tasks: install-nerdfont.yml
 
 - name: "Read current mate terminal profiles"
-  dconf:
+  community.general.dconf:
     key: "/org/mate/terminal/global/profile-list"
     state: "read"
   register: "profile_list"
@@ -33,7 +33,7 @@
     new_profile_list: "{{ profile_list.value | regex_replace(']$', \", 'xenon']\") }}"
 
 - name: "Writing updated profile list"
-  dconf:
+  community.general.dconf:
     key: "/org/mate/terminal/global/profile-list"
     value: "{{ new_profile_list }}"
   when: "'xenon' not in profile_list.value"
