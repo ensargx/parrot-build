@@ -3,7 +3,7 @@
   become: yes
   ansible.builtin.pip:
     name: pipx
-    executable: python3
+    executable: pip3
     extra_args: "--break-system-packages"
 
 - name: Ensure pipx path is set globally
