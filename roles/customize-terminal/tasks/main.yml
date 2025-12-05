@@ -14,8 +14,6 @@
     insertafter: EOF
     create: yes
 
-- include_tasks: install-nerdfont.yml
-
 - name: "Read current mate terminal profiles"
   community.general.dconf:
     key: "/org/mate/terminal/global/profile-list"
