@@ -1,4 +1,17 @@
 ---
+- name: Comment out non-commented backport lines in all apt sources files
+  replace:
+    path: "{{ item }}"
+    regexp: '(^[^#].*backport)'
+    replace: '#\1'
+  loop: >-
+    {{
+      ['/etc/apt/sources.list']
+      + lookup('fileglob', '/etc/apt/sources.list.d/*', wantlist=True)
+    }}
+  become: true
+  become_method: sudo
+
 - name: "Updating apt repo/cache"
   apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
   become: true

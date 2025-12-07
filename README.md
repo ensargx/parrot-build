@@ -1,7 +1,7 @@
 # Instructions
 * Clone and enter the repo (git clone)
-* Install Ansible (`sudo apt install ansible`)
-* ansible-galaxy install -r requirements.yml
-* ansible-playbook -K main.yml
+* Install Ansible (`sudo pip install ansible --break-system-packages`)
+* Install requirements `ansible-galaxy install -r requirements.yml`
+* Run playbook `ansible-playbook -K main.yml`
 
 `--start-at-task "Load MATE panel config"` ile belirle yerden başla
